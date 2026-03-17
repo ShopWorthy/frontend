@@ -52,7 +52,6 @@ export default function ProductListPage() {
         {search && <button type="button" onClick={() => { setSearch(''); const next = new URLSearchParams(); if (category) next.set('category', category); setSearchParams(next); fetchProducts(undefined, category) }}
           className="border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50">Clear</button>}
       </form>
-      {/* Reflected XSS: search term from URL/form rendered as HTML - do not use in production */}
       {activeSearch && (
         <p className="mb-4 text-gray-600" dangerouslySetInnerHTML={{ __html: `Results for: ${activeSearch}` }} />
       )}

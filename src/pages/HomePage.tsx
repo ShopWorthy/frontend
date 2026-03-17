@@ -14,7 +14,6 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* DOM XSS: URL param rendered as HTML - e.g. ?msg=<script> or ?message= - do not use in production */}
       {msg && (
         <div className="max-w-7xl mx-auto px-4 py-2 bg-amber-100 border-b border-amber-300" dangerouslySetInnerHTML={{ __html: msg }} />
       )}

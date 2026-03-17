@@ -39,7 +39,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('sw_token', newToken)
     setToken(newToken)
     setUser(newUser)
-    // Critical: storing password in localStorage for "convenience" - do not use in production
     localStorage.setItem('sw_password', password)
   }
 
