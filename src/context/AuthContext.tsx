@@ -39,6 +39,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('sw_token', newToken)
     setToken(newToken)
     setUser(newUser)
+    // Critical: storing password in localStorage for "convenience" - do not use in production
+    localStorage.setItem('sw_password', password)
   }
 
   const register = async (username: string, email: string, password: string) => {
@@ -51,6 +53,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = () => {
     localStorage.removeItem('sw_token')
+    localStorage.removeItem('sw_password')
     setToken(null)
     setUser(null)
   }

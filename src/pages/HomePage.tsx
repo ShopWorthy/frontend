@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import api from '../services/api'
 import ProductCard from '../components/ProductCard'
 
 export default function HomePage() {
   const [products, setProducts] = useState<any[]>([])
+  const [searchParams] = useSearchParams()
+  const msg = searchParams.get('msg') ?? searchParams.get('message') ?? ''
 
   useEffect(() => {
     api.get('/api/products').then(res => setProducts(res.data.slice(0, 4))).catch(() => {})
@@ -12,6 +14,10 @@ export default function HomePage() {
 
   return (
     <div>
+      {/* DOM XSS: URL param rendered as HTML - e.g. ?msg=<script> or ?message= - do not use in production */}
+      {msg && (
+        <div className="max-w-7xl mx-auto px-4 py-2 bg-amber-100 border-b border-amber-300" dangerouslySetInnerHTML={{ __html: msg }} />
+      )}
       {/* Hero */}
       <div className="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
