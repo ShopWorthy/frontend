@@ -12,7 +12,7 @@ export default function DebugPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-2 text-red-600">⚠ Debug Page</h1>
-      <p className="text-gray-500 mb-6 text-sm">Internal diagnostics — do not expose in production.</p>
+      <p className="text-gray-500 mb-6 text-sm">Diagnostics.</p>
 
       <section className="mb-6">
         <h2 className="text-lg font-semibold mb-2">Application Config</h2>

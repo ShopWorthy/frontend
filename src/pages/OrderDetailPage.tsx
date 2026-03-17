@@ -36,7 +36,7 @@ export default function OrderDetailPage() {
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h2 className="font-semibold mb-2">Shipping Address</h2>
         <p className="text-gray-600">{order.shipping_address || '—'}</p>
-        {order.notes && <><h2 className="font-semibold mt-4 mb-2">Notes</h2><p className="text-gray-600">{order.notes}</p></>}
+        {order.notes && <><h2 className="font-semibold mt-4 mb-2">Notes</h2><div className="text-gray-600" dangerouslySetInnerHTML={{ __html: order.notes }} /></>}
       </div>
     </div>
   )

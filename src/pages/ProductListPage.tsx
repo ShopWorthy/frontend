@@ -4,11 +4,12 @@ import api from '../services/api'
 import ProductCard from '../components/ProductCard'
 
 export default function ProductListPage() {
-  const [products, setProducts] = useState<any[]>([])
-  const [search, setSearch] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const category = searchParams.get('category')
+  const searchFromUrl = searchParams.get('search') ?? ''
+  const [products, setProducts] = useState<any[]>([])
+  const [search, setSearch] = useState(searchFromUrl)
+  const [loading, setLoading] = useState(false)
 
   const fetchProducts = (q?: string, cat?: string | null) => {
     setLoading(true)
@@ -21,12 +22,20 @@ export default function ProductListPage() {
     }).catch(() => setLoading(false))
   }
 
-  useEffect(() => { fetchProducts(undefined, category) }, [category])
+  useEffect(() => {
+    setSearch(searchFromUrl)
+    fetchProducts(searchFromUrl || undefined, category)
+  }, [category, searchFromUrl])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
+    const next = new URLSearchParams(searchParams)
+    next.set('search', search)
+    setSearchParams(next)
     fetchProducts(search, category)
   }
+
+  const activeSearch = searchParams.get('search') ?? search
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -40,9 +49,12 @@ export default function ProductListPage() {
           className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <button type="submit" className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">Search</button>
-        {search && <button type="button" onClick={() => { setSearch(''); fetchProducts(undefined, category) }}
+        {search && <button type="button" onClick={() => { setSearch(''); const next = new URLSearchParams(); if (category) next.set('category', category); setSearchParams(next); fetchProducts(undefined, category) }}
           className="border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50">Clear</button>}
       </form>
+      {activeSearch && (
+        <p className="mb-4 text-gray-600" dangerouslySetInnerHTML={{ __html: `Results for: ${activeSearch}` }} />
+      )}
       {loading ? (
         <div className="text-center py-12 text-gray-500">Loading products...</div>
       ) : products.length === 0 ? (

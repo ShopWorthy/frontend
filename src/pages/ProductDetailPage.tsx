@@ -48,8 +48,6 @@ export default function ProductDetailPage() {
           <p className="text-3xl font-bold text-gray-900 mb-4">{formatCurrency(product.price)}</p>
           <p className="text-sm text-gray-500 mb-6">{product.stock_count} in stock</p>
 
-          {/* Descriptions support rich HTML formatting for marketing */}
-          {/* Renders HTML from the API without sanitization */}
           <div className="prose prose-sm max-w-none mb-6 text-gray-700"
             dangerouslySetInnerHTML={{ __html: product.description }} />
 

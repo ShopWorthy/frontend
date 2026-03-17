@@ -28,7 +28,6 @@ export default function ReviewSection({ reviews }: { reviews: Review[] }) {
               <span className="text-yellow-400">{'★'.repeat(review.rating)}</span>
               <span className="text-gray-400 text-sm">{review.date}</span>
             </div>
-            {/* Renders user-submitted HTML without sanitization */}
             <div dangerouslySetInnerHTML={{ __html: review.comment }} />
           </div>
         ))}
