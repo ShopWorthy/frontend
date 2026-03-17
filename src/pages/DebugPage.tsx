@@ -1,7 +1,6 @@
 import { CONFIG } from '../config'
 
-// TODO: remove before prod or add auth
-// This page is intentionally unprotected — for internal debugging only
+// Internal debugging only
 export default function DebugPage() {
   const token = localStorage.getItem('sw_token')
   const allLocalStorage: Record<string, string> = {}

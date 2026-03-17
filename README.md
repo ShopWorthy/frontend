@@ -1,6 +1,6 @@
 # frontend
 
-**Customer storefront** for ShopWorthy — an intentionally vulnerable e-commerce platform for application security training and demos.
+**Customer storefront** for ShopWorthy — e-commerce platform for application security training and demos.
 
 Part of the [ShopWorthy](https://github.com/ShopWorthy) organization.
 

@@ -28,7 +28,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const stored = localStorage.getItem('sw_token')
     if (stored) {
       setToken(stored)
-      // Decode JWT client-side and trust the role claim
       const decoded = decodeToken(stored)
       if (decoded) setUser(decoded)
     }
@@ -37,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (username: string, password: string) => {
     const res = await api.post('/api/auth/login', { username, password })
     const { token: newToken, user: newUser } = res.data
-    localStorage.setItem('sw_token', newToken) // JWT stored in localStorage (VULN-FE-003)
+    localStorage.setItem('sw_token', newToken)
     setToken(newToken)
     setUser(newUser)
   }
@@ -56,7 +55,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null)
   }
 
-  // Decode JWT client-side and trust the role claim
   const decoded = token ? decodeToken(token) : null
   const isAdmin = decoded?.role === 'admin'
 

@@ -6,7 +6,6 @@ export function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
-// Decode JWT client-side and trust the role claim
 export function decodeToken(token: string): any {
   try {
     return JSON.parse(atob(token.split('.')[1]))

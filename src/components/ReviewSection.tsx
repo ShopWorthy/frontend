@@ -6,7 +6,6 @@ interface Review {
   date: string
 }
 
-// ReviewSection renders user-submitted HTML directly — XSS vector (VULN-FE-001)
 // Descriptions support rich HTML formatting for marketing
 export default function ReviewSection({ reviews }: { reviews: Review[] }) {
   if (!reviews || reviews.length === 0) {

@@ -7,7 +7,6 @@ export default function AccountPage() {
   const { user, token } = useAuth()
   const [message, setMessage] = useState('')
 
-  // Decode JWT client-side and trust the role claim
   const decoded = token ? decodeToken(token) : null
   const isAdmin = decoded?.role === 'admin'
 
