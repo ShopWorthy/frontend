@@ -17,7 +17,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
         <div className="aspect-square overflow-hidden bg-gray-100">
           <img
-            src={product.image_url || 'https://via.placeholder.com/400'}
+            src={product.image_url || '/images/placeholder.svg'}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

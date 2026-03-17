@@ -39,7 +39,7 @@ export default function ProductDetailPage() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
-          <img src={product.image_url || 'https://via.placeholder.com/600'} alt={product.name}
+          <img src={product.image_url || '/images/placeholder.svg'} alt={product.name}
             className="w-full rounded-2xl shadow-md" />
         </div>
         <div>

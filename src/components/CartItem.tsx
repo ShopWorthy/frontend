@@ -17,7 +17,7 @@ interface CartItemProps {
 export default function CartItem({ item, onUpdate, onRemove }: CartItemProps) {
   return (
     <div className="flex items-center gap-4 py-4 border-b border-gray-200">
-      <img src={item.image_url || 'https://via.placeholder.com/80'} alt={item.name}
+      <img src={item.image_url || '/images/placeholder.svg'} alt={item.name}
         className="w-20 h-20 object-cover rounded-lg" />
       <div className="flex-1">
         <h3 className="font-medium text-gray-900">{item.name}</h3>
